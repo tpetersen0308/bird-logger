@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   
   has_many :sightings
   has_many :birds, through: :sightings
+  
+  extend Slugable::ClassMethods
+  include Slugable::InstanceMethods
 end
