@@ -1,4 +1,10 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+  
+  configure do
+    use Rack::Flash
+  end  
 
   get '/users/signup' do
     if logged_in?
@@ -16,6 +22,7 @@ class UsersController < ApplicationController
       redirect "/users/#{user.slug}"
       
     else
+      flash[:message] = "Signup unsuccessful. Please try again; each field must be completed."
       redirect "/users/signup"
     end
   end
