@@ -20,6 +20,18 @@ class ApplicationController < Sinatra::Base
       erb :login
     end
   end
+  
+  post '/login' do
+    user = User.find_by(:username => params[:username])
+    
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/users/#{user.slug}"
+    else
+      flash[:message] = "Invalid password/username combination. Please try again."
+      redirect '/login'
+    end
+  end
 
   helpers do
     def logged_in?
