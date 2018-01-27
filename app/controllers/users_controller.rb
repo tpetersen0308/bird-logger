@@ -21,4 +21,19 @@ class UsersController < ApplicationController
     end
   end
   
+  get '/users/:slug'
+    @user = User.find_by_slug(params[:slug])
+    
+    if @user && logged_in?
+      erb :'/users/show'
+    elsif logged_in?
+      flash[:message] = "That user account does not exist."
+      redirect '/'
+    else
+      flash[:message] = "You must be logged in to view user accounts. Please log in or sign up below."
+      redirect '/'
+    end
+  end
+      
+  
 end
