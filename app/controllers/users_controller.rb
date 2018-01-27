@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   get '/users/signup' do
     if logged_in?
+      flash[:message] = 'You are already logged in!'
       redirect "/users/#{current_user.slug}"
     else
       erb :'users/new'
@@ -13,8 +14,8 @@ class UsersController < ApplicationController
     
     if user.save
       session[:user_id] = user.id
+      flash[:message] = "Hello, #{user.username}! Welcome to Bird Logger!"
       redirect "/users/#{user.slug}"
-      
     else
       flash[:message] = "Signup unsuccessful. Please try again; each field must be completed."
       redirect "/users/signup"
