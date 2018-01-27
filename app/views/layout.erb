@@ -18,6 +18,9 @@
 
       <%= yield %>
 
+    <% if logged_in? %>
+      <p><a href='/logout'>Log Out</a></p>
+    <% end %>
     <footer class="branding">
       <small>&copy; 2018 <strong>BirdLogger</strong></small>
     </footer>
