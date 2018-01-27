@@ -25,7 +25,7 @@ class SightingsController < ApplicationController
     if sighting.save
       redirect "/sightings/#{sighting.id}"
     elsif params[:bird][:name] != ""
-      sighting.bird = Bird.find_or_create_by(:name => params[:bird][:name])
+      sighting.bird_id = Bird.find_or_create_by(:name => params[:bird][:name]).id
       sighting.save
       redirect "/sightings/#{sighting.id}"
     else
@@ -35,10 +35,10 @@ class SightingsController < ApplicationController
   end
   
   get '/sightings/:id' do
-    @sighting = sighting.find_by(:id => params[:id])
+    @sighting = Sighting.find_by(:id => params[:id])
     
     if @sighting && logged_in?
-      erb :'/sighting/show'
+      erb :'/sightings/show'
     elsif logged_in?
       flash[:message] = "That sighting does not exist."
       redirect '/sightings'
