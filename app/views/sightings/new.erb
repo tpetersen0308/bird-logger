@@ -1,0 +1,38 @@
+<h2>Add a Sighting:</h2>
+
+  <!-- Create new bird or select from existing birds 
+       Create new location or select from existing locations
+       Enter date
+       Enter time-->
+  <label id="date">Date:</label>
+  <input id="date" type="date" name="date"></input>
+  
+  <br></br>
+  
+  <label>Time:</label>
+  
+  <br></br>
+  
+  <% ["Morning", "Afternoon", "Evening"].each do |time| %>
+    <input type="radio" name="sighting[time]" value="<%= time %>"><%= time %></input>
+    <br></br>
+  <% end %>
+       
+  <label>Add a new bird: </label>
+  
+  <br></br>
+  
+  <!-- new bird fields -->
+  
+  <br></br>
+  
+  <label>Or select from existing birds:</label>
+  
+  <!-- add radio buttons for existing birds -->
+  
+  <br></br>
+  
+  
+  
+  
+  
