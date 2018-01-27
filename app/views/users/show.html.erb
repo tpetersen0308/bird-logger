@@ -1,1 +1,8 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h3><%= @user.username %>'s Sightings:</h3>
+<% @user.sightings.each do |sighting %>
+  <h4><%= sighting.bird.name %></h4>
+  <ul>
+    <li>Location: <%= sighting.location %></li>
+    <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
+  </ul>
+<% end %>
