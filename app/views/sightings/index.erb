@@ -1,0 +1,12 @@
+<h2>Sightings:</h2>
+  <% @sightings.each do |sighting| %>
+  <p>
+    <h3><%= sighting.bird.name %></h3>
+    <h4><%= sighting.user.username %></h4>
+    <ul>
+      <li>Family: <%= sighting.bird.family %></li>
+      <li>Location: <%= sighting.location %></li>
+      <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
+    </ul>
+  </p>
+  <% end %>
