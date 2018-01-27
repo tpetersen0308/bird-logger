@@ -1,12 +1,17 @@
 <h2><%= @user.username %>'s Sightings:</h2>
 
-<% @user.sightings.each do |sighting| %>
-<p>
-  <h4><%= sighting.bird.name %></h4>
-  
-  <ul>
-    <li>Location: <%= sighting.location %></li>
-    <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
-  </ul>
-</p>
+<% if @user.sightings.size > 0 %>
+  <% @user.sightings.each do |sighting| %>
+  <p>
+    <h4><%= sighting.bird.name %></h4>
+    
+    <ul>
+      <li>Family: <%= sighting.bird.family %></li>
+      <li>Location: <%= sighting.location %></li>
+      <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
+    </ul>
+  </p>
+  <% end %>
+<% else %>
+  <h4>You have no sightings to list. Add a new sighting <a href="/sightings/new">here.</a></h4>
 <% end %>
