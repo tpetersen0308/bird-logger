@@ -1,5 +1,5 @@
 <h3><%= @user.username %>'s Sightings:</h3>
-<% @user.sightings.each do |sighting %>
+<% @user.sightings.each do |sighting| %>
   <h4><%= sighting.bird.name %></h4>
   <ul>
     <li>Location: <%= sighting.location %></li>
