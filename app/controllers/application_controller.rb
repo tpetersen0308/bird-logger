@@ -33,6 +33,7 @@ class ApplicationController < Sinatra::Base
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      flash[:message] = "Welcome, #{user.username}!"
       redirect "/users/#{user.slug}"
     else
       flash[:message] = "Invalid password/username combination. Please try again."
