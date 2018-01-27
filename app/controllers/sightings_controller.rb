@@ -33,4 +33,18 @@ class SightingsController < ApplicationController
       redirect '/sightings/new'
     end
   end
+  
+  get '/sightings/:id'
+    @sighting = sighting.find_by(:id => params[:id])
+    
+    if @sighting && logged_in?
+      erb :'/sighting/show'
+    elsif logged_in?
+      flash[:message] = "That sighting does not exist."
+      redirect '/sightings'
+    else
+      flash[:message] = "You must be logged in to view sightings. Please log in or sign up below."
+      redirect '/'
+    end
+  end
 end
