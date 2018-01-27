@@ -42,7 +42,9 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/logout' do
+    user = current_user
     session[:user_id] = nil
+    flash[:message] = "Goodbye, #{user.username}!"
     redirect '/'
   end
 
