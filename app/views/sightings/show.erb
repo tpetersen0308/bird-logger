@@ -1,0 +1,6 @@
+<h3>Sighting by <a href="/users/<%= @sighting.user.slug %>"><%= @sighting.user.username %></a></h3>
+<h4>Bird: <%= @sighting.bird.name %></h4>
+<ul>
+  <li>Location: <%= @sighting.location %></li>
+  <li>Date: <%= "#{@sighting.date}, #{@sighting.time}" %></li>
+</ul>
