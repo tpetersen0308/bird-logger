@@ -34,7 +34,7 @@ class SightingsController < ApplicationController
     end
   end
   
-  get '/sightings/:id'
+  get '/sightings/:id' do
     @sighting = sighting.find_by(:id => params[:id])
     
     if @sighting && logged_in?
