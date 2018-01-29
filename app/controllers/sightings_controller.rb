@@ -83,6 +83,8 @@ class SightingsController < ApplicationController
     
     if sighting && current_user == sighting.user
       sighting.destroy
+      flash[:message] = "Your sighting had been deleted."
+      redirect "users/#{current_user.slug}"
     elsif sighting && logged_in?
       flash[:message] = "You may only delete your own sightings!"
       redirect "users/#{current_user.slug}"

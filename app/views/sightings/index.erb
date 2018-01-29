@@ -6,7 +6,11 @@
     <ul>
       <li>Location: <%= sighting.location %></li>
       <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
+      <li>Notes: <%= sighting.notes %></li>
     </ul>
   </p>
+    <% if sighting.user == current_user %>  
+      <p>- <a href="/sightings/<%= sighting.id %>/edit">Edit</a> or <a href="/sightings/<%= sighting.id %>/delete">delete</a> this sighting</p>
+    <% end %>
   <% end %>
   <p><a href="/sightings/new">Add Sighting</a></p>
