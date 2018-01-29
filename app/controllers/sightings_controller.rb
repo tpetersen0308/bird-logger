@@ -20,7 +20,7 @@ class SightingsController < ApplicationController
   end
   
   post '/sightings' do
-    sighting = Sighting.new(:date => params[:date], :time => params[:time], :location => params[:location], :user_id => current_user.id, :bird_id => params[:bird_id])
+    sighting = Sighting.new(:date => params[:date], :time => params[:time], :location => params[:location], :user_id => current_user.id, :bird_id => params[:bird_id], :notes => params[:notes])
     
     if sighting.save
       redirect "/sightings/#{sighting.id}"
@@ -64,4 +64,18 @@ class SightingsController < ApplicationController
       redirect '/'
     end
   end
+  
+  patch '/sightings/:id' do
+    sighting = Sighting.find_by(:id => params[:id])
+    sighting.update(:date => params[:date], :time => params[:time], :location => params[:location], :bird_id => params[:bird_id], :notes => params[:notes])
+    
+    if sighting.save && params[:bird][:name] == ""
+      redirect "/sightings/#{sighting.id}"
+    else
+      sighting.bird_id = Bird.find_or_create_by(:name => params[:bird][:name]).id
+      sighting.save
+      redirect "/sightings/#{sighting.id}"
+    end
+  end
+  
 end
