@@ -47,4 +47,21 @@ class SightingsController < ApplicationController
       redirect '/'
     end
   end
+  
+  get '/sightings/:id/edit' do
+    @sighting = Sighting.find_by(:id => params[:id])
+    
+    if @sighting && current_user == @sighting.user
+      erb :"sightings/edit"
+    elsif current_user == @sighting.user
+      flash[:message] = "That sighting does not exist."
+      redirect '/sightings'
+    elsif logged_in?
+      flash[:message] = "You may only edit your own sightings!"
+      redirect "users/#{current_user.slug}"
+    else
+      flash[:message] = "You must be logged in to view sightings. Please log in or sign up below."
+      redirect '/'
+    end
+  end
 end
