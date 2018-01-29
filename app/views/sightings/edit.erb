@@ -1,0 +1,57 @@
+<h2>Edit Sighting:</h2>
+<form method="post" action="/sightings/<%= @sighting.id %>">
+  <input id="hidden" type="hidden" name="_method" value="patch"></input>
+  
+  <label id="date">Date:</label>
+  
+  <input id="date" type="date" name="date" value="<%= @sighting.date %>"></input>
+  
+  <br></br>
+  
+  <label>Time:</label>
+  
+  <br></br>
+  
+  <% ["Morning", "Afternoon", "Evening"].each do |time| %>
+    <input type="radio" name="time" value="<%= time %>" <%= 'checked' if @sighting.time == time %>> <%= time %></input>
+    <br></br>
+  <% end %>
+  
+  <label id="location">Location:</label>
+  
+  <input id="location" type="text" name="location" value="<%= @sighting.location %>"></input>
+  
+  <br></br>
+       
+  <label>Add a new bird: </label>
+  
+  <br></br>
+  
+  <label id="name">Name:</label>
+  <input id="name" type="text" name="bird[name]"></input>
+  <br></br>
+  
+  <label>Or select from existing birds:</label>
+  
+  <br></br>
+  
+  <% Bird.all.each do |bird| %>
+    <input type="radio" name="bird_id" value="<%= bird.id %>" <%= 'checked' if @sighting.bird == bird %>> <%= bird.name %></input><br></br>
+  <% end %>
+
+  <label id="notes">Notes (optional):</label>
+  
+  <input id="notes" type="text" name="notes" size="100" value="<%= @sighting.notes %>"></input>
+  
+  <br></br>
+  
+  <input type="submit" value="Update Sighting"></input>
+
+</form>
+
+<br></br>
+  
+  
+  
+  
+  
