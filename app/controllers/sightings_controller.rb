@@ -78,4 +78,21 @@ class SightingsController < ApplicationController
     end
   end
   
+  get '/sightings/:id/delete' do
+    sighting = Sighting.find_by(:id => params[:id])
+    
+    if sighting && current_user == sighting.user
+      sighting.destroy
+    elsif sighting && logged_in?
+      flash[:message] = "You may only delete your own sightings!"
+      redirect "users/#{current_user.slug}"
+    elsif logged_in?
+      flash[:message] = "That sighting does not exist."
+      redirect "/sightings"
+    else
+      flash[:message] = "You must be logged in to delete sightings. Please log in or sign up below."
+      redirect '/'
+    end
+  end
+  
 end
