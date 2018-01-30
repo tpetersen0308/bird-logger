@@ -9,6 +9,16 @@ class UsersController < ApplicationController
     end
   end
   
+  get '/users' do
+    if logged_in?
+      @users = User.all
+      erb :'users/index'
+    else
+      flash[:message] = "You must be logged in to view user accounts. Please log in or sign up below."
+      redirect '/'
+    end
+  end
+  
   post '/users' do 
     user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
     
