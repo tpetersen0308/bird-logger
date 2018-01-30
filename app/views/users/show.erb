@@ -3,7 +3,7 @@
 <% if @user.sightings.size > 0 %>
   <% @user.sightings.each do |sighting| %>
   <p>
-    <h4><%= sighting.bird.name %></h4>
+    <h4><a href="/birds/<%= sighting.bird.slug %>"><%= sighting.bird.name %></a></h4>
     
     <ul>
       <li>Location: <%= sighting.location %></li>
