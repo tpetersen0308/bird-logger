@@ -1,1 +1,11 @@
-<h1>This is the Model's index page.</h1>
+<h2>Birds:</h2>
+  <% @birds.each do |bird| %>
+  <p>
+    <h3><%= bird.name %></h3>
+    <h4><a href="/users/<%= bird.slug %>"><%= bird.name %></h4>
+    <ul>
+      <li>Logged <%= bird.sightings.size %> times.</li>
+    </ul>
+  </p>
+  <% end %>
+  <p><a href="/sightings/new">Add Sighting</a></p>
