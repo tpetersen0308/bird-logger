@@ -1,1 +1,21 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h2><%= @bird.name %></h2>
+<h3>Sightings:</h3>
+<% if @bird.sightings.size > 0 %>
+  <% @bird.sightings.each do |sighting| %>
+  <p>
+    <ul>
+      <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
+      <li>Location: <%= sighting.location %></li>
+      <li>User: <%= sighting.user.username %></li>
+      <% if sighting.notes %> 
+        <li>Notes: <%= sighting.notes %></li> 
+      <% end %>
+    </ul>
+  </p>
+    <% if sighting.user == current_user %>  
+      <p>- <a href="/sightings/<%= sighting.id %>/edit">Edit</a> or <a href="/sightings/<%= sighting.id %>/delete">delete</a> this sighting</p>
+    <% end %>
+  <% end %>
+<% else %>
+  <h4>This bird has no sightings. Add a new sighting for it <a href="/sightings/new">here.</a></h4>
+<% end %>
