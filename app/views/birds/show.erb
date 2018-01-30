@@ -7,7 +7,7 @@
       <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
       <li>Location: <%= sighting.location %></li>
       <li>User: <a href="/users/<%= sighting.user.slug %>"><%= sighting.user.username %></a></li>
-      <% if sighting.notes %> 
+      <% if sighting.notes != "" %> 
         <li>Notes: <%= sighting.notes %></li> 
       <% end %>
     </ul>
