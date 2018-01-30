@@ -7,7 +7,8 @@ module Slugable
 
   module InstanceMethods
     def slug
-      self.username.downcase.gsub(" ", "-").delete("/\W/")
+      self.class.instance_methods.include?(:username) ? name_type = "username" : name_type = "name"
+      self.send(name_type).downcase.gsub(" ", "-").delete("/\W/")
     end
   end
 end
