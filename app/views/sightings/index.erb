@@ -1,7 +1,7 @@
 <h2>Sightings:</h2>
   <% @sightings.each do |sighting| %>
   <p>
-    <h3><%= sighting.bird.name %></h3>
+    <h3><a href="/birds/<%= sighting.bird.slug %>"><%= sighting.bird.name %></a></h3>
     <h4><a href="/users/<%= sighting.user.slug %>"><%= sighting.user.username %></a></h4>
     <ul>
       <li>Location: <%= sighting.location %></li>
