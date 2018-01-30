@@ -1,8 +1,7 @@
 <h2>Birds:</h2>
   <% @birds.each do |bird| %>
   <p>
-    <h3><%= bird.name %></h3>
-    <h4><a href="/users/<%= bird.slug %>"><%= bird.name %></h4>
+    <h3><a href="/birds/<%= bird.slug %>"><%= bird.name %></a></h3>
     <ul>
       <li>Logged <%= bird.sightings.size %> times.</li>
     </ul>
