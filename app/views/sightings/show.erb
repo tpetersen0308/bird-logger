@@ -3,7 +3,7 @@
 <ul>
   <li>Location: <%= @sighting.location %></li>
   <li>Date: <%= "#{@sighting.date}, #{@sighting.time}" %></li>
-  <% if @sighting.notes != %> 
+  <% if @sighting.notes != "" %> 
     <li>Notes: <%= @sighting.notes %></li> 
   <% end %>
 </ul>
