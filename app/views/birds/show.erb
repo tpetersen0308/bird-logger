@@ -1,7 +1,7 @@
 <h2><%= @bird.name %></h2>
 <h3><%= "#{@bird.sightings.size} Sighting#{@bird.sightings.size == 1 ? '' : 's'}:" %></h3>
 <% if @bird.sightings.size > 0 %>
-  <% @bird.sightings.each do |sighting| %>
+  <% @bird.sightings.order_by(%:date).each do |sighting| %>
   <p>
     <ul>
       <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>

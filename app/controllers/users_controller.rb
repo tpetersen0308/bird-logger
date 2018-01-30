@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   
   get '/users' do
     if logged_in?
-      @users = User.all
+      @users = User.all.order_by(&:username)
       erb :'users/index'
     else
       flash[:message] = "You must be logged in to view user accounts. Please log in or sign up below."
