@@ -11,7 +11,9 @@
       <% if sighting.notes != "" %> <li>Notes: <%= sighting.notes %></li> <% end %>
     </ul>
   </p>
-  <p>- <a href="/sightings/<%= sighting.id %>/edit">Edit</a> or <a href="/sightings/<%= sighting.id %>/delete">delete</a> this sighting</p>
+    <% if sighting.user == current_user %>  
+      <p>- <a href="/sightings/<%= sighting.id %>/edit">Edit</a> or <a href="/sightings/<%= sighting.id %>/delete">delete</a> this sighting</p>
+    <% end %>
   <% end %>
 <% else %>
   <h4>You have no sightings to list. Add a new sighting <a href="/sightings/new">here.</a></h4>
