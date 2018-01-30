@@ -1,11 +1,12 @@
-<h3>Sighting by <a href="/users/<%= @sighting.user.slug %>"><%= @sighting.user.username %></a></h3>
+<h2>Sighting by <a href="/users/<%= @sighting.user.slug %>"><%= @sighting.user.username %></a></h2>
 <h4>Bird: <%= @sighting.bird.name %></h4>
 <ul>
   <li>Location: <%= @sighting.location %></li>
   <li>Date: <%= "#{@sighting.date}, #{@sighting.time}" %></li>
-  <% if sighting.notes %> <li>Notes: <%= sighting.notes %></li> <% end %>
+  <% if @sighting.notes %> <li>Notes: <%= @sighting.notes %></li> <% end %>
 </ul>
 <br></br>
-    <% if sighting.user == current_user %>  
-      <p>- <a href="/sightings/<%= sighting.id %>/edit">Edit</a> or <a href="/sightings/<%= sighting.id %>/delete">delete</a> this sighting</p>
-    <% end %>
+  <% if @sighting.user == current_user %>  
+    <p><a href="/sightings/<%= @sighting.id %>/edit">Edit</a> or <a href="/sightings/<%= @sighting.id %>/delete">delete</a> this sighting</p>
+  <% end %>
+<p><a href="/sightings/new">Add Sighting</a></p>
