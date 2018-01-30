@@ -3,7 +3,7 @@
   <p>
     <h3><a href="/users/<%= user.slug %>"><%= user.username %></a></h3>
     <ul>
-      <li><%= user.sightings.size %> sightings logged.</li>
+      <li><%= "#{user.sightings.size} sighting#{user.sightings.size == 1 ? '' : 's'} logged." %></li>
     </ul>
   </p>
   <% end %>

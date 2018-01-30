@@ -3,7 +3,7 @@
   <p>
     <h3><a href="/birds/<%= bird.slug %>"><%= bird.name %></a></h3>
     <ul>
-      <li>Logged <%= bird.sightings.size %> times.</li>
+      <li><%= "Logged #{bird.sightings.size} time#{bird.sightings.size == 1 ? '' : 's'}." %></li>
     </ul>
   </p>
   <% end %>
