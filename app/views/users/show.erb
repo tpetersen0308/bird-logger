@@ -1,7 +1,7 @@
 <h2><%= @user.username %>'s Sightings:</h2>
 
 <% if @user.sightings.size > 0 %>
-  <% @user.sightings.order_by(&:date).each do |sighting| %>
+  <% @user.sightings.sort_by(&:date).each do |sighting| %>
   <p>
     <h4><a href="/birds/<%= sighting.bird.slug %>"><%= sighting.bird.name %></a></h4>
     

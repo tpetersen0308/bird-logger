@@ -2,7 +2,7 @@ class BirdsController < ApplicationController
 
   get "/birds" do
     if logged_in?
-      @birds = Bird.all.uniq.order_by(&:name)
+      @birds = Bird.all.uniq.sort_by(&:name)
       erb :'birds/index'
     else
       flash[:message] = "You must be logged in to view birds. Please log in or sign up below."
