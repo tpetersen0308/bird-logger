@@ -21,15 +21,16 @@ class SightingsController < ApplicationController
   
   post '/sightings' do
     sighting = Sighting.new(:date => params[:date], :time => params[:time], :location => params[:location], :user_id => current_user.id, :bird_id => params[:bird_id], :notes => params[:notes])
+    sighting.bird_id = Bird.find_or_create_by(:name => params[:bird][:name]).id if params[:bird][:name] != ""
     
     if sighting.save
       redirect "/sightings/#{sighting.id}"
-    elsif params[:bird][:name] != ""
-      sighting.bird_id = Bird.find_or_create_by(:name => params[:bird][:name]).id
-      sighting.save
-      redirect "/sightings/#{sighting.id}"
+    #elsif params[:bird][:name] != ""
+    #  sighting.bird_id = Bird.find_or_create_by(:name => params[:bird][:name]).id
+    #  sighting.save
+    #  redirect "/sightings/#{sighting.id}"
     else
-      flash[:message] = "A sighting cannot be created without selecting or entering a bird."
+      flash[:message] = "A sighting must have a date, time, location and bird to be saved."
       redirect '/sightings/new'
     end
   end
