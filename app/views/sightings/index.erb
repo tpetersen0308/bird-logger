@@ -6,7 +6,7 @@
     <ul>
       <li>Location: <%= sighting.location %></li>
       <li>Date: <%= "#{sighting.date}, #{sighting.time}"%></li>
-      <li>Notes: <%= sighting.notes %></li>
+      <% if sighting.notes != "" %> <li>Notes: <%= sighting.notes %></li> <% end %>
     </ul>
   </p>
     <% if sighting.user == current_user %>  
