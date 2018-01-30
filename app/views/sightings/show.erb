@@ -9,5 +9,4 @@
   <% if @sighting.user == current_user %>  
     <p><a href="/sightings/<%= @sighting.id %>/edit">Edit</a> or <a href="/sightings/<%= @sighting.id %>/delete">delete</a> this sighting</p>
   <% end %>
-<p><a href="/sightings/new">Add Sighting</a></p>
-<p><a href="/sightings">View All Sightings</a></p>
+<p><a href="/sightings">All Sightings</a> | <a href="/birds">All Birds</a> | <a href="/sightings/new">Add Sighting</a></p>
